@@ -2,9 +2,9 @@ import { UserProps } from '@core/modules/user/domain/user.entity';
 import { AuthRepositoryDto } from '../domain/dtos/auth-repository.dto';
 import { UserRepositoryDto } from '@core/modules/user/domain/dtos/user-repository.dto';
 import { AuthEntity } from '../domain/auth.entity';
-import { comparePassword } from '@core/global/application/encrypt/compare-password';
-import { createToken } from '@core/global/application/jwt/create-token';
-import { logger } from '@core/global/vendor/logger';
+import { comparePassword } from '@core/shared/application/encrypt/compare-password';
+import { createToken } from '@core/shared/application/jwt/create-token';
+import { logger } from '@core/shared/vendor/logger';
 
 type SignInInput = {
   email: string;

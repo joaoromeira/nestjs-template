@@ -10,7 +10,7 @@ async function bootstrap() {
    * Setting up Swagger
    */
   const config = new DocumentBuilder()
-    .setTitle('Template')
+    .setTitle('NestJS Template')
     .setVersion('1.0')
     .addBearerAuth(
       {

@@ -5,7 +5,7 @@ import {
   UnauthorizedException,
 } from '@nestjs/common';
 import { Request } from 'express';
-import { verifyToken } from '@core/global/application/jwt/verify-token';
+import { verifyToken } from '@core/shared/application/jwt/verify-token';
 import { Reflector } from '@nestjs/core';
 import { IS_PUBLIC_KEY } from './auth.decorators';
 

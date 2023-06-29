@@ -1,7 +1,7 @@
 import { UserProps } from '@core/modules/user/domain/user.entity';
 import { AuthRepositoryDto } from '../domain/dtos/auth-repository.dto';
 import { AuthEntity } from '../domain/auth.entity';
-import { createToken } from '@core/global/application/jwt/create-token';
+import { createToken } from '@core/shared/application/jwt/create-token';
 
 type RefreshTokenInput = {
   refreshToken: string;

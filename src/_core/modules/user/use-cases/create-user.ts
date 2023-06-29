@@ -1,6 +1,6 @@
 import { UserEntity } from '../domain/user.entity';
 import { UserRepositoryDto } from '../domain/dtos/user-repository.dto';
-import { hashPassword } from '@core/global/application/encrypt/hash-password';
+import { hashPassword } from '@core/shared/application/encrypt/hash-password';
 
 type CreateUserInput = {
   name: string;
