@@ -2,7 +2,7 @@ import { UserEntity, UserProps } from '../../../domain/user.entity';
 import { UserRepositoryDto } from '../../../domain/dtos/user-repository.dto';
 import { Repository } from 'typeorm';
 
-export class UserTypeOrmRepository implements UserRepositoryDto {
+export class UserOrmRepository implements UserRepositoryDto {
   constructor(private ormRepo: Repository<UserEntity>) {}
 
   async create(input: UserEntity): Promise<UserEntity> {

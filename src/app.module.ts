@@ -12,7 +12,6 @@ import { AuthModule } from './auth/auth.module';
  */
 import { UserSchema } from '@core/modules/user/infrastructure/db/typeorm/user.schema';
 import { AuthSchema } from '@core/modules/auth/infrastructure/db/typeorm/auth.schema';
-
 @Module({
   imports: [
     ConfigModule.forRoot(),

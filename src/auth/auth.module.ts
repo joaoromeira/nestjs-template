@@ -3,14 +3,14 @@ import { AuthService } from './auth.service';
 import { AuthController } from './auth.controller';
 import { SignIn } from '@core/modules/auth/use-cases/sign-in';
 import { AuthRepositoryDto } from '@core/modules/auth/domain/dtos/auth-repository.dto';
-import { AuthTypeOrmRepository } from '@core/modules/auth/infrastructure/db/typeorm/auth-typeorm.repository';
+import { AuthOrmRepository } from '@core/modules/auth/infrastructure/db/typeorm/auth-typeorm.repository';
 import { AuthSchema } from '@core/modules/auth/infrastructure/db/typeorm/auth.schema';
 import { AuthEntity } from '@core/modules/auth/domain/auth.entity';
 import { TypeOrmModule, getDataSourceToken } from '@nestjs/typeorm';
 import { DataSource } from 'typeorm';
 import { UserRepositoryDto } from '@core/modules/user/domain/dtos/user-repository.dto';
 import { UserSchema } from '@core/modules/user/infrastructure/db/typeorm/user.schema';
-import { UserTypeOrmRepository } from '@core/modules/user/infrastructure/db/typeorm/user-typeorm.repository';
+import { UserOrmRepository } from '@core/modules/user/infrastructure/db/typeorm/user-typeorm.repository';
 import { UserEntity } from '@core/modules/user/domain/user.entity';
 import { RefreshToken } from '@core/modules/auth/use-cases/refresh-token';
 import { APP_GUARD } from '@nestjs/core';
@@ -22,16 +22,16 @@ import { AuthGuard } from './auth.guard';
   providers: [
     AuthService,
     {
-      provide: AuthTypeOrmRepository,
+      provide: AuthOrmRepository,
       useFactory: (dataSource: DataSource) => {
-        return new AuthTypeOrmRepository(dataSource.getRepository(AuthEntity));
+        return new AuthOrmRepository(dataSource.getRepository(AuthEntity));
       },
       inject: [getDataSourceToken()],
     },
     {
-      provide: UserTypeOrmRepository,
+      provide: UserOrmRepository,
       useFactory: (dataSource: DataSource) => {
-        return new UserTypeOrmRepository(dataSource.getRepository(UserEntity));
+        return new UserOrmRepository(dataSource.getRepository(UserEntity));
       },
       inject: [getDataSourceToken()],
     },
@@ -43,14 +43,14 @@ import { AuthGuard } from './auth.guard';
       ) => {
         return new SignIn(authRepository, userRepository);
       },
-      inject: [AuthTypeOrmRepository, UserTypeOrmRepository],
+      inject: [AuthOrmRepository, UserOrmRepository],
     },
     {
       provide: RefreshToken,
       useFactory: (authRepository: AuthRepositoryDto) => {
         return new RefreshToken(authRepository);
       },
-      inject: [AuthTypeOrmRepository],
+      inject: [AuthOrmRepository],
     },
     {
       provide: APP_GUARD,

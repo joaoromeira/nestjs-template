@@ -2,7 +2,7 @@ import { AuthEntity } from '../../../domain/auth.entity';
 import { AuthRepositoryDto } from '../../../domain/dtos/auth-repository.dto';
 import { Repository } from 'typeorm';
 
-export class AuthTypeOrmRepository implements AuthRepositoryDto {
+export class AuthOrmRepository implements AuthRepositoryDto {
   constructor(private ormRepo: Repository<AuthEntity>) {}
 
   async create(input: AuthEntity): Promise<AuthEntity> {

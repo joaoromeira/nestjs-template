@@ -31,7 +31,6 @@ export class SignIn {
       // Throw error
       return null;
     }
-    logger.info({ user });
 
     const currentAuth = await this.authRepository.findOne(user.id);
 
